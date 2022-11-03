@@ -4,12 +4,13 @@ function App() {
   const [url, setURL] = useState([])
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("https://meme-api.herokuapp.com/gimme")
+      const response = await fetch("https://meme-api.herokuapp.com/gimme/10")
       const data = await response.json()
-      setURL([...url, data.url])
+      const urlList = data.memes.map((meme) => meme.url)
+      setURL(urlList)
     }
     fetchData()
-  })
+  }, [])
 
   return (
     <>
@@ -17,7 +18,9 @@ function App() {
         <h1>Meme-ory</h1>
       </header>
       <main>
-        <img src={url[0]} />
+        {url.map((URL) => (
+          <img width="250px" key={URL} src={URL} />
+        ))}
       </main>
       <footer></footer>
     </>
