@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react"
 
 function App() {
+  const [url, setURL] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("https://meme-api.herokuapp.com/gimme")
+      const data = await response.json()
+      setURL([...url, data.url])
+    }
+    fetchData()
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <h1>Meme-ory</h1>
       </header>
-    </div>
-  );
+      <main>
+        <img src={url[0]} />
+      </main>
+      <footer></footer>
+    </>
+  )
 }
 
-export default App;
+export default App
