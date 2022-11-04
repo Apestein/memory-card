@@ -11,3 +11,11 @@ body {
   background-color: #2b2d42;
   color: #ff006e;
 }
+
+.example-enter {
+  opacity: 0.01;
+}
+.example-enter-active {
+  opacity: 1;
+  transition: opacity 100ms ease;
+}

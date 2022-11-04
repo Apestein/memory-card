@@ -3,6 +3,20 @@ import styled from "styled-components"
 import "./styles/index.css"
 import app from "./styles/App.module.css"
 
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid #ff006e;
+  color: #ff006e;
+  width: 300px;
+  padding: 10px 0;
+  align-self: center;
+  font-size: large;
+  &:hover {
+    background-color: #ff006e;
+    color: white;
+  }
+`
 function App() {
   const [url, setURL] = useState([])
   const [score, setScore] = useState(0)
@@ -42,21 +56,6 @@ function App() {
     console.log(e.target.getAttribute("src"))
     setClicked([...clicked, e.target.getAttribute("src")])
   }
-
-  const Button = styled.button`
-    background: transparent;
-    border-radius: 3px;
-    border: 2px solid #ff006e;
-    color: #ff006e;
-    width: 300px;
-    padding: 10px 0;
-    align-self: center;
-    font-size: large;
-    &:hover {
-      background-color: #ff006e;
-      color: white;
-    }
-  `
 
   return (
     <>

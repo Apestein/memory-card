@@ -18,3 +18,6 @@
 .img {
   max-height: 250px;
 }
+.img:hover {
+  outline: 1px solid #ff006e;
+}
