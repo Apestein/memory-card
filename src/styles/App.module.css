@@ -1,0 +1,20 @@
+.score {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 50px;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.img {
+  max-height: 250px;
+}
