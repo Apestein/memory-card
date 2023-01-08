@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { createRef, useEffect, useState } from "react"
 import styled from "styled-components"
 import "./styles/index.css"
 import app from "./styles/App.module.css"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 const Button = styled.button`
   background: transparent;
@@ -28,7 +29,7 @@ function App() {
 
   async function getMemes() {
     const response = await fetch(
-      "https://meme-api.herokuapp.com/gimme/ProgrammerHumor/15"
+      "https://meme-api.com/gimme/ProgrammerHumor/15"
     )
     const data = await response.json()
     const urlList = data.memes.map((meme) => meme.url)
@@ -53,7 +54,6 @@ function App() {
     setURL(array)
     setScore(score + 1)
     if (score >= bestScore) setBestScore((bestScore) => bestScore + 1)
-    console.log(e.target.getAttribute("src"))
     setClicked([...clicked, e.target.getAttribute("src")])
   }
 
@@ -71,9 +71,23 @@ function App() {
         <Button onClick={getMemes}>Get New Memes</Button>
       </header>
       <main className={app.main}>
-        {url.map((URL) => (
-          <img onClick={handleClick} className={app.img} key={URL} src={URL} />
-        ))}
+        <TransitionGroup>
+          {url.map((URL) => (
+            <CSSTransition
+              key={URL}
+              nodeRef={createRef(null)}
+              timeout={1000}
+              classNames="item"
+            >
+              <img
+                onClick={handleClick}
+                className={app.img}
+                //key={URL}
+                src={URL}
+              />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
       </main>
       <footer></footer>
     </>

@@ -12,10 +12,17 @@ body {
   color: #ff006e;
 }
 
-.example-enter {
-  opacity: 0.01;
+.item-enter {
+  opacity: 0;
 }
-.example-enter-active {
+.item-enter-active {
   opacity: 1;
-  transition: opacity 100ms ease;
+  transition: opacity 1000ms ease;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
 }
